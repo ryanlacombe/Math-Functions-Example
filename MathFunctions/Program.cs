@@ -8,6 +8,8 @@ namespace MathFunctions
 {
     class Program
     {
+        static int[] P;
+        static int[] Q;
         static void Main(string[] args)
         {
             Console.WriteLine("What is X for the equation?");
@@ -29,6 +31,12 @@ namespace MathFunctions
             Console.WriteLine("What is T for the equation?");
             string bInput3 = Console.ReadLine();
             BlendFunction(Convert.ToInt32(bInput1), Convert.ToInt32(bInput2), Convert.ToInt32(bInput3));
+
+            OutterFunction(P, Q, 5, 6, 2, 4, 8, 3);
+
+            PlaneFunction(4, 6, 8, 2, 5, 7, 3);
+
+            BezierCurveFunction(3, 2, 4, 6, 8);
 
             Console.ReadKey();
         }
@@ -65,15 +73,15 @@ namespace MathFunctions
             double result = Math.Sqrt(((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1)));
             return result;
         }
-        static int OutterFunction(int[] P, int[] Q, int x, int y, int z)
+        static int OutterFunction(int[] P, int[] Q, int x1, int y1, int z1, int x2, int y2, int z2)
         {
-            int[] p = { x, y, z };
+            int[] p = { x1, y1, z1 };
             P = p;
-            int[] q = { x, y, z };
+            int[] q = { x2, y2, z2 };
             Q = q;
             int innerFunction()
             {
-                int innerResult = P[0] * Q[0] + P[1] * Q[1] + P[2] * P[2];
+                int innerResult = (P[0] * Q[0]) + (P[1] * Q[1]) + (P[2] * Q[2]);
                 return innerResult;
             }
             int result = innerFunction();
